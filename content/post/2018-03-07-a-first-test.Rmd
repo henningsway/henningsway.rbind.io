@@ -15,9 +15,16 @@ output:
 knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
 ```
 
-😄😄😄
+# Situations
+I currently look around and try to gather awesome introductory material to the tidyverse #rstats. 😄😄😄
 
-# Load a Package
+```{r echo=FALSE}
+blogdown::shortcode('tweet', '959548845330808832')
+```
+
+
+# What it could look like
+## Load a Package
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 
@@ -26,19 +33,9 @@ iris %>%
   knitr::kable()
 ```
 
-```{r}
-print("hello")
-```
-
-
-```{r echo=FALSE}
-blogdown::shortcode('tweet', '852205086956818432')
-```
-
 ## Do some Modeling
 ```{sql eval=FALSE, echo=TRUE, include=TRUE}
-SELECT * FROM hadoop.preprod
+SELECT * FROM some.funny_table
 ```
 
-
-and here?
+and so on...

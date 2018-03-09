@@ -14,7 +14,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     showBorder = true
     backgroundColor = "white"
     font = "Raleway" # should match the name on Google Fonts!
-    enableEmoji = true
+    enableEmoji = false
     highlight = true
     highlightStyle = "github"
     highlightLanguages = ["r"]
@@ -44,7 +44,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 # The list of available icons can be found at http://fontawesome.io/icons/
 
 [[menu.icon]]
-    url = "mailto:henningsway AT posteo.org"
+    url = "mailto:henningsway @ posteo.org"
     name = "envelope-o"
     weight = 1
 
