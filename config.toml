@@ -2,7 +2,7 @@ baseURL = "https://henningsway.github.io/"
 languageCode = "en-us"
 title = "Personal Blog"
 theme = "minimal"
-disqusShortname = "henningsway" # delete this to disable disqus comments
+disqusShortname = "rstats-blog" # delete this to disable disqus comments
 googleAnalytics = "UA-115437024-1"
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
