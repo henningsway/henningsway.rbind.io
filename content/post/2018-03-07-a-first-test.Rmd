@@ -1,0 +1,43 @@
+---
+title: Introduction to R
+author: ''
+date: '2018-03-07'
+slug: intro-to-r
+categories:
+  - R
+tags: ["rstats101"]
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
+```
+
+```{r}
+# what is this?
+
+print(1)
+```
+
+# Load a Package
+
+:smile:
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+
+iris %>% 
+  count(Species) %>% 
+  knitr::kable()
+```
+
+```{r echo=FALSE}
+blogdown::shortcode('tweet', '852205086956818432')
+```
+
+## Do some Modeling
+```{sql eval=FALSE, echo=TRUE, include=TRUE}
+SELECT * FROM hadoop.preprod
+```
+
+
+and here?

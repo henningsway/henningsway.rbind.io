@@ -1,23 +1,21 @@
-baseURL = "https://henningsway.github.io/"
+baseURL = "http://example.com/"
 languageCode = "en-us"
-title = "Personal Blog"
+title = "Minimal"
 theme = "minimal"
-disqusShortname = "" # delete this to disable disqus comments
+disqusShortname = "username" # delete this to disable disqus comments
 googleAnalytics = ""
-ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
 [params]
-    author = "Henning Bumann"
-    description = "Welcome to the jungle!"
-    githubUsername = "henningsway"
-    accent = "#42709b"
+    author = "Calin Tataru"
+    description = "Personal blog theme powered by Hugo"
+    githubUsername = "#"
+    accent = "red"
     showBorder = true
     backgroundColor = "white"
     font = "Raleway" # should match the name on Google Fonts!
-    enableEmoji = true
     highlight = true
-    highlightStyle = "github"
-    highlightLanguages = ["r", "python", "sql", "scala", "javascript", "git", "bash", "yaml"]
+    highlightStyle = "solarized-dark"
+    highlightLanguages = ["go", "haskell", "kotlin", "scala", "swift"]
 
 [[menu.main]]
     url = "/"
@@ -34,36 +32,31 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     name = "Projects"
     weight = 3
 
-[[menu.main]]
-#    url = "/about-me/"
-#    name = "About Me"
-#    weight = 4
-
 # Social icons to be shown on the right-hand side of the navigation bar
 # The "name" field should match the name of the icon to be used
 # The list of available icons can be found at http://fontawesome.io/icons/
 
 [[menu.icon]]
-    url = "mailto:henningsway[AT]posteo.org"
+    url = "mailto:me@example.com"
     name = "envelope-o"
     weight = 1
 
 [[menu.icon]]
-    url = "https://github.com/henningsway/"
+    url = "https://github.com/username/"
     name = "github"
     weight = 2
 
 [[menu.icon]]
-    url = "https://twitter.com/henningsway/"
+    url = "https://twitter.com/username/"
     name = "twitter"
     weight = 3
 
 [[menu.icon]]
-    url = "https://www.linkedin.com/in/henningbumann/"
+    url = "https://www.linkedin.com/in/username/"
     name = "linkedin"
     weight = 4
 
 [[menu.icon]]
-    url = "https://www.xing.com/profile/Henning_Bumann/"
-    name = "xing"
+    url = "https://www.stackoverflow.com/username/"
+    name = "stack-overflow"
     weight = 5
