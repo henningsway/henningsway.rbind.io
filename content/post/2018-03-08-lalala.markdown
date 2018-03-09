@@ -1,0 +1,54 @@
+---
+title: lalala
+author: Henning
+date: '2018-03-08'
+slug: lalala
+categories: []
+tags: []
+---
+
+
+
+
+```r
+# what is this?
+
+print(1)
+#> [1] 1
+```
+
+# Load a Package
+
+:smile:
+
+:grin:
+
+:poop:
+
+
+```r
+library(tidyverse)
+
+iris %>% 
+  count(Species) %>% 
+  knitr::kable()
+```
+
+
+
+|Species    |  n|
+|:----------|--:|
+|setosa     | 50|
+|versicolor | 50|
+|virginica  | 50|
+
+<!--html_preserve-->{{% tweet "852205086956818432" %}}<!--/html_preserve-->
+
+## Do some Modeling
+
+```sql
+SELECT * FROM hadoop.preprod
+```
+
+
+and here?
