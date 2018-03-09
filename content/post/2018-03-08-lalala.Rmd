@@ -18,13 +18,6 @@ print(1)
 ```
 
 # Load a Package
-
-:smile:
-
-:grin:
-
-:poop:
-
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 
@@ -33,9 +26,6 @@ iris %>%
   knitr::kable()
 ```
 
-```{r echo=FALSE}
-blogdown::shortcode('tweet', '852205086956818432')
-```
 
 ## Do some Modeling
 ```{sql eval=FALSE, echo=TRUE, include=TRUE}

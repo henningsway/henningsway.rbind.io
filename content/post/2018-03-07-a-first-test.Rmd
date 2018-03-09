@@ -6,17 +6,16 @@ slug: intro-to-r
 categories:
   - R
 tags: ["rstats101"]
+output:
+  blogdown::html_page:
+    toc: true
 ---
 
 ```{r include=FALSE}
 knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
 ```
 
-```{r}
-# what is this?
-
-print(1)
-```
+😄😄😄
 
 # Load a Package
 
