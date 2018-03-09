@@ -17,7 +17,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     enableEmoji = true
     highlight = true
     highlightStyle = "github"
-    highlightLanguages = ["r", "python", "sql", "scala", "javascript", "git", "bash", "yaml"]
+    highlightLanguages = ["r"]
 
 [[menu.main]]
     url = "/"

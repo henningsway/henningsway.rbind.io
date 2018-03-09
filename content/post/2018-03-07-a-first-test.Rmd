@@ -18,9 +18,6 @@ knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
 😄😄😄
 
 # Load a Package
-
-:smile:
-
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 
@@ -28,6 +25,11 @@ iris %>%
   count(Species) %>% 
   knitr::kable()
 ```
+
+```{r}
+print("hello")
+```
+
 
 ```{r echo=FALSE}
 blogdown::shortcode('tweet', '852205086956818432')
