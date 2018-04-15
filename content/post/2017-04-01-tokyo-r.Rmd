@@ -1,0 +1,17 @@
+---
+title: Tokyo.R
+author: "Henning"
+date: '2017-04-01'
+categories: []
+tags: ["rusergroup", "japan", "r"]
+---
+
+Today I had the opportunity to meet many awesome data scientists and *R*-users in Tokyo. I had the idea of attending a programming meeting during my holidays a few weeks ago and reached out to the Tokyo.*R*-community. I was very lucky becaused they scheduled a meeting and agreed to hold the presentations in english language. It was not easy to prepare the presentation during the holiday, because there was always something else going on. But I think it went well and we all had a very good time, which is the most important thing, right?
+
+As a topic I chose `blogdown` ("How to blog using *R* language"), because this is what I am doing at the moment and it's also a interesting, new software. What can I say: the meeting was held in 41st floor of a skyscraper close to Tokyo Station. So I could finally get a very good view of the city and also easily catch a Shinkansen to Osaka, where I am headed next. There were some very interesting topics in the presentations today and I also learned about some new *R*-packages and resources. I also learned that the #globaltokyor-community is not that much different from our communities in Hamburg or Munich e.g. And I saw some good japanese humor, which I enjoyed a lot. "No package? Go develop it!!" :)
+
+As of today, I have one more week in Japan. I will spend some more time in Kansai, visit a few more temples and will try to go to Hiroshima. The Rail Pass will make this possible, I hope. But if it doesn't work out, than it's also okay. I want to enjoy my time in this very special country and I have a feeling, that I might come here again anyway.
+
+Domo arigato gozaimasu!
+
+![Tokyo.R](/img/tokyo_r.jpg)
