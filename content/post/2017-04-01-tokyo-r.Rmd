@@ -1,9 +1,13 @@
 ---
-title: Tokyo.R
+title: "Tokyo.R"
 author: "Henning Bumann"
 date: '2017-04-01'
+slug: visiting-the-rusergroup-in-tokyo
 categories: []
 tags: ["R", "rusergroup", "japan"]
+draft: false
+output:
+  blogdown::html_page
 ---
 
 Today I had the opportunity to meet many awesome data scientists and *R*-users in Tokyo. I had the idea of attending a programming meeting during my holidays a few weeks ago and reached out to the Tokyo.*R*-community. I was very lucky becaused they scheduled a meeting and agreed to hold the presentations in english language. It was not easy to prepare the presentation during the holiday, because there was always something else going on. But I think it went well and we all had a very good time, which is the most important thing, right?
