@@ -1,0 +1,45 @@
+---
+title: Introducing R (to someone)
+date: '2018-03-07'
+slug: intro-to-r
+categories:
+  - rbloggers
+tags: ["R","tidyverse", "rstats101"]
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
+```
+
+# May I introduce you...
+*...to my favourite programming language?*
+
+every once in a while you want to introduce someone new to the tidyverse. But how do you do it and where do you start?
+
+(you have the chance to make the first impression.)
+
+- setting: at work
+- show that R can produce awesome results easily (get to the quirks later...)
+- show where to learn more (cheatsheets)
+
+
+- look for some of the cool resources to learn R
+
+## some helpful resources
+Here are some resources I've found:
+
+* http://paldhous.github.io/NICAR/2018/r-analysis.html (recommended by [\@PatrickStotz](https://twitter.com/PatrickStotz))
+* https://github.com/hadley/building-permits (from -link to video)
+* http://stat545.com/topics.html (by JennyBC)
+* http://r4ds.had.co.nz (classic!)
+
+
+## PS
+Thank you, R.️
+
+```{r rstats love, echo=FALSE}
+blogdown::shortcode('tweet', '970314363696570368')
+```
