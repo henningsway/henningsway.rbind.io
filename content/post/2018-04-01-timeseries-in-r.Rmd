@@ -1,0 +1,165 @@
+---
+title: Regression Modeling for Time Series
+author: "Henning Bumann"
+date: '2018-04-15'
+slug: regression-for-timeseries
+categories: []
+tags: ["R", "timeseries"]
+draft: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+# Regression for Time Series
+About a month ago Rob Hyndman finished the 2nd edition of his open source book [Forecasting: Principles and Practice](https://www.otexts.org/fpp2/). It's a fantastic introduction and companion to applied time series modeling using R.
+
+Recently I rediscovered the `tslm()`-function of the excellent `forecast` library, which provides a convenient wrapper for linear models with timeseries-data. The function provides two shorthands to add "trend"- and "season"-variables as regressors, which is quite useful to avoid problems such as ["spurious regression"](https://www.otexts.org/fpp2/causality.html). Let's take a look at an example.
+
+## Query Google Trends
+```{r, cache=TRUE, eval=FALSE}
+# devtools::install_github("PMassicotte/gtrendsR")
+library(gtrendsR)
+trends <- gtrends(c("sun", "spring"), geo = c("DE"))
+plot(trends)
+```
+
+```{r, eval=TRUE}
+# saveRDS(trends, "trends.Rdata")
+trends <- readRDS("trends.Rdata")
+```
+
+[Google Trends](https://trends.google.com/) can often serve as useful demo-data for timeseries-modelling and the `gtrendsR`-package makes it easy to access this data-source.
+
+The overall search volume is higher for "sun" than it is for "spring". Both series show a seasonal pattern, while the search volume for "sun" also shows a slight downwards trend - this may be influenced by a few bad summers which we had in Germany! :)
+
+To confirm this, we can transform the data into two timeseries and look at their (classical) decomposition:
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(forecast)
+
+# turn dataframe into timeseries
+create_ts <- function(df, kw){
+  df %>% 
+    pluck("interest_over_time") %>% 
+    filter(date    >= as.Date("2014-01-01"),
+           keyword == kw) %>% 
+    with(ts(hits, start = c(2014, 1), frequency = 52.18))
+}
+
+sun    <- create_ts(trends, "sun")
+spring <- create_ts(trends, "spring")
+
+# compare decomposition for both time series
+plot_sun <- sun %>% 
+  decompose() %>%
+  autoplot() +
+  ggtitle("Sun")
+
+plot_spring <- spring %>% 
+  decompose() %>%
+  autoplot() + 
+  ggtitle("Spring")
+
+cowplot::plot_grid(plot_sun, plot_spring, ncol = 2)
+```
+
+<!-- maybe do this in one plot using ggseas-extension -->
+
+
+## Modeling the relationship between the series
+It may be useful to quantify the linear relationship between these two variables using linear regression.
+
+But because the data is time-dependent and a least one series shows a trend, we should consider modeling these characteristics as well. We start with the trend:
+
+```{r}
+show_estimates <- function(model) {
+  model %>%
+    broom::tidy() %>% 
+    dplyr::select(term, estimate) %>%
+    modify_if(is.numeric, round, 2) %>% 
+
+    # + some preparation to combine lm and arima output later
+    modify_at("term", as.character) %>% 
+    modify_at("term", stringr::str_replace,
+              pattern = "intercept",
+              replacement = "(Intercept)") %>% 
+    modify_at("term", stringr::str_replace,
+              pattern = "(trend|drift)", ## improve pattern
+              replacement = "trend/drift")
+}
+
+# fit models
+ts_models <- list()
+ts_models$lm1       <- tslm(sun ~ spring)
+ts_models$lm1_trend <- tslm(sun ~ trend + spring)
+
+# inspect parameters
+ts_models %>% 
+  map(show_estimates) %>% 
+  reduce(right_join, by = "term") %>% 
+  set_names(c("term", names(ts_models))) %>% 
+  knitr::kable()
+```
+
+We can see, that the model with the trend produces different estimates of the co-relation between the two series and that the model with the trend may be more appropriate.
+
+## Accounting for the autocorrelation in the data
+The `forecast`-package makes it easy to combine the time-dependent variation of (the residuals of) a timeseries and regression-modeling using the `Arima` or `auto.arima`-functions. (For the implementation details please see https://robjhyndman.com/hyndsight/arimax/.)
+
+In this case, we will add an autocorrelation of order 1 to the model.
+
+```{r}
+# fit regression with autocorrelated models
+ts_models$ar1       <- Arima(sun, xreg = spring, order = c(1,0,0))
+ts_models$ar1_trend <- Arima(sun, xreg = spring, order = c(1,0,0),
+                             include.drift = TRUE)
+# inspect parameters
+ts_models %>% 
+  map(show_estimates) %>% 
+  reduce(right_join, by = "term") %>% 
+  set_names(c("term", names(ts_models))) %>% 
+  knitr::kable()
+
+# compare models
+ts_models %>% 
+  map_dbl(BIC)
+```
+
+We can see, that the estimates for the relationship between the search traffic for "sun" and "spring" depends quite a bit on the existence of the `ar1`- and `intercept`-terms. The visual inspection of the data and the corresponding BIC-values indicate, that the `ar1_trend`-model may be the model with the best fit and hence, the parameters of this model should be preferred to the other ones.
+
+If you would like to read a little more about this topic, please take a look at the [Regressions](https://www.otexts.org/fpp2/regression.htm)-Chapter of the fpp2-book. For comments and feedback on this post you can use the comments or reach me via [\@henningsway](https://twitter.com/henningsway).
+
+
+<!-- ## not included: ggseas-adoption -->
+```{r eval=FALSE, include=FALSE}
+trends$interest_over_time %>% 
+  filter(keyword == "sun") %>% 
+  ggplot(aes(date, hits)) +
+  geom_line(colour = "grey80") +
+  ggseas::stat_stl(s.window = 7)
+
+library(ggseas)
+tsdf(spring) %>% 
+  ggplot(aes(x, y)) +
+  geom_line(colour = "grey80") +
+  stat_stl(s.window = "periodic")
+
+ggplot(tsdf(AirPassengers), aes(x, y)) +
+   geom_line(colour = "grey80") +
+   stat_seas()
+
+#-----
+ap_df <- tsdf(AirPassengers)
+
+ggsdc(ap_df, aes(x = x, y = y), method = "decompose") +
+   geom_line()
+
+cbind(sun, spring) %>% 
+  ggseas::tsdf() %>% 
+  gather("series", "hits", -x) %>% 
+  ggsdc(aes(x, hits, colour = series), method = "decompose") +
+  geom_line()
+```
