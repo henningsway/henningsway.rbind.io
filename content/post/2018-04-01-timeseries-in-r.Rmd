@@ -5,9 +5,7 @@ date: '2018-05-03'
 slug: regression-for-timeseries
 categories: ["rbloggers"]
 tags: ["R", "timeseries", "forecast", "gtrendsR", "huxtable"]
-draft: false
 output:
-  # html_document:
   blogdown::html_page:
     toc: true
 ---
@@ -145,7 +143,7 @@ ts_models %>%
 
 Because our data shows a strong seasonal pattern, that hasn't been accounted for in the regresssion model, the parameters of the AR-model differ strongly from the regression. This is because the AR-parameter picks up a lot of the seasonal variation in the data.
 
-## Summary
+# Summary
 ```{r}
 # compare models
 ts_models %>% 

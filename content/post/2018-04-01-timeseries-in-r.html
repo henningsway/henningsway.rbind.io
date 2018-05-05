@@ -16,9 +16,8 @@ output:
 <li><a href="#query-google-trends">Query Google Trends</a></li>
 <li><a href="#explore-and-decompose-the-series">Explore and Decompose the Series</a></li>
 <li><a href="#model-the-linear-relationship">Model the Linear Relationship</a></li>
-<li><a href="#accounting-for-autocorrelation">Accounting for Autocorrelation</a><ul>
+<li><a href="#accounting-for-autocorrelation">Accounting for Autocorrelation</a></li>
 <li><a href="#summary">Summary</a></li>
-</ul></li>
 </ul>
 </div>
 
@@ -192,8 +191,9 @@ ts_models %&gt;%
 </table>
 
 <p>Because our data shows a strong seasonal pattern, that hasn’t been accounted for in the regresssion model, the parameters of the AR-model differ strongly from the regression. This is because the AR-parameter picks up a lot of the seasonal variation in the data.</p>
-<div id="summary" class="section level2">
-<h2>Summary</h2>
+</div>
+<div id="summary" class="section level1">
+<h1>Summary</h1>
 <pre class="r"><code># compare models
 ts_models %&gt;% 
   map_df(BIC) %&gt;% 
@@ -226,5 +226,4 @@ ts_models %&gt;%
 <p>The visual inspection of the data and the corresponding <em>BIC</em>-values indicate, that the <code>ar1</code>-model may be the model with the best fit and hence, the parameters of this model should be preferred to the other ones.</p>
 <p>Overall I wanted to showcase some of tools one can use to analyze the relation between two timeseries and the implications of certain model choices. If you would like to read a little more about this topic, please take a look at the <a href="https://www.otexts.org/fpp2/regression.htm">Regressions</a>-Chapter of the fpp2-book. For comments and feedback on this post you can use the comments or reach me at twitter via <a href="https://twitter.com/henningsway">@henningsway</a>.</p>
 <!-- ## not included: ggseas-adoption -->
-</div>
 </div>
