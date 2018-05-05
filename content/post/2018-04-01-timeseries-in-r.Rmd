@@ -7,8 +7,8 @@ categories: ["rbloggers"]
 tags: ["R", "timeseries", "forecast", "gtrendsR", "huxtable"]
 draft: false
 output:
-  html_document:
-  # blogdown::html_page:
+  # html_document:
+  blogdown::html_page:
     toc: true
 ---
 
