@@ -1,11 +1,11 @@
 ---
 title: "Regression Modeling for Time Series"
 author: "Henning Bumann"
-date: '2018-04-15'
+date: '2018-05-03'
 slug: regression-for-timeseries
-categories: []
+categories: ["rbloggers"]
 tags: ["R", "timeseries", "forecast", "gtrendsR", "huxtable"]
-draft: true
+draft: false
 output:
   html_document:
   # blogdown::html_page:
@@ -16,9 +16,9 @@ output:
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>", message = FALSE)
 ```
 
-About a month ago Rob Hyndman finished the 2nd edition of his open source book [Forecasting: Principles and Practice](https://www.otexts.org/fpp2/). It's a fantastic introduction and companion to applied time series modeling using R.
+A little over a month ago Rob Hyndman finished the 2nd edition of his open source book [Forecasting: Principles and Practice](https://www.otexts.org/fpp2/). Take a look, it's a fantastic introduction and companion to applied time series modeling using R.
 
-Recently I rediscovered the `tslm()`-function of the excellent `forecast`-library, which provides a convenient wrapper for linear models with timeseries-data. The function provides two shorthands to add *trend*- and *season*-variables as regressors, which is quite useful to avoid problems such as ["spurious regression"](https://www.otexts.org/fpp2/causality.html). Let's look at an example.
+It made me I rediscover the `tslm()`-function of the excellent `forecast`-library, which provides a convenient wrapper for linear models with timeseries-data. The function provides two shorthands to add *trend*- and *season*-variables as regressors, which is quite useful to avoid problems such as ["spurious regression"](https://www.otexts.org/fpp2/causality.html). Let's look at an example.
 
 # Query Google Trends
 ```{r query gtrends, cache=TRUE}
@@ -32,15 +32,15 @@ trends <- gtrends(c("frühling", "spring"), geo = c("DE"))
 <!-- trends <- readRDS(here::here("trends.Rdata")) -->
 <!-- ``` -->
 
-[Google Trends](https://trends.google.com/) can often serve as useful demo-data for timeseries-modelling and the [gtrendsR](https://github.com/PMassicotte/gtrendsR)-package by Philippe Massicotte and Dirk Eddelbuettel makes it easy to access this data-source. Here we ask for the (relative) weekly search volume for Germany for the past five years. (Obiously, there aren't that many people in Germany searching for En)
+[Google Trends](https://trends.google.com/) can often serve as useful demo-data for timeseries-modelling and the [gtrendsR](https://github.com/PMassicotte/gtrendsR)-package by Philippe Massicotte and Dirk Eddelbuettel makes it easy to access this data-source. Here we ask for the (relative) weekly search volume for Germany for the past five years for the keywords "frühling" and "spring". An englisch word and its german equivalent.
 
 # Explore and Decompose the Series
-To confirm this, we can transform the data into two timeseries and look at their (classical) decomposition:
+To explore the data we can transform the data into timeseries and look at their (classical) decomposition:
 
 ```{r message=FALSE, warning=FALSE, fig.height=10}
 library(tidyverse)
 library(forecast)
-library(ggseas)
+library(ggseas)  # install from https://github.com/ellisp/ggseas
  
 # turn dataframe into timeseries
 create_ts <- function(df, kw){
@@ -63,14 +63,12 @@ cbind(fruehling, spring) %>%
   labs(x = "time", y ="hits", title = "Decomposition of Search Traffic")
 ```
 
-The overall search volume is higher for "fruehling" than it is for "spring". Both series show a seasonal pattern, while the search volume for "fruehling" also shows a slight downwards trend - this may be influenced by a few bad summers which we had in Germany! :)
-
-Link to Peter Ellis [ggseas](https://github.com/ellisp/ggseas)-package
+The overall search volume is higher for "frühling" than it is for "spring". Both series show a seasonal pattern, while the search volume for "frühling" also shows a slight downwards trend - this may be influenced by a few bad springs which we had in Germany! :)
 
 # Model the Linear Relationship
-Even though this is clearly seasonal data it may be useful to quantify the linear relationship between these two variables using linear regression.
+Even though this is clearly seasonal data it may be useful to quantify the linear relationship between these two variables using linear regression. How strongly do the two search terms "swing together"?
 
-But because the data is time-dependent and a least one series shows a trend, we should consider modeling these characteristics as well.
+But because the data is time-dependent and a least one series shows a trend, and both of them show a season, we should consider modeling these characteristics as well.
 
 ```{r, message=FALSE}
 # customize model output
@@ -107,14 +105,13 @@ hux_table <- function(df, caption) {
 }
 ```
 
-The above code is just to produce nicer outputs.
+The above code is just to produce nicer outputs, `show_estimates()` serves as a customized version of `broom::tidy()` and `hux_table()` produces nice html-tables from a dataframe.
 
 ```{r}
 # fit models
 ts_models <- list()
 ts_models$lm1              <- tslm(fruehling ~ spring)
 ts_models$lm1_trend        <- tslm(fruehling ~ trend + spring)
-ts_models$lm1_trend_season <- tslm(fruehling ~ trend + season + spring)
 
 # inspect parameters
 ts_models %>% 
@@ -125,10 +122,10 @@ ts_models %>%
   hux_table("Coefficients for Linear Models")
 ```
 
-We can see, that the model with the trend produces different estimates of the co-relation between the two series and that the model with the trend may be more appropriate.
+We can see, that the model with the trend produces similar estimates of the co-relation between the two series. In this case the model choice doesn't seem to make that mucht of a difference, though the trend_model would probably be preferred. If the trend of the variables were stronger, the differences between the models would be bigger as well. 
 
 # Accounting for Autocorrelation
-The `forecast`-package makes it easy to combine the time-dependent variation of (the residuals of) a timeseries and regression-modeling using the `Arima` or `auto.arima`-functions. (For the implementation details please see https://robjhyndman.com/hyndsight/arimax/.)
+Timeseries are often characterised by the presence of trend and/or seasonality, but there may be additional autocorrelation in the data, which can be accounted for. The `forecast`-package makes it easy to combine the time-dependent variation of (the residuals of) a timeseries and regression-modeling using the `Arima` or `auto.arima`-functions. (For the implementation details please see https://robjhyndman.com/hyndsight/arimax/.)
 
 In this case, we will add an autocorrelation of order 1 to the model.
 
@@ -146,7 +143,7 @@ ts_models %>%
   hux_table("Coefficients including Autocorrelated Models")
 ```
 
-We can see, that the estimates for the relationship between the search traffic for "fruehling" and "spring" depends quite a bit on the existence of the `ar1`- and `intercept`-terms. 
+Because our data shows a strong seasonal pattern, that hasn't been accounted for in the regresssion model, the parameters of the AR-model differ strongly from the regression. This is because the AR-parameter picks up a lot of the seasonal variation in the data.
 
 ```{r}
 # compare models
@@ -159,7 +156,7 @@ ts_models %>%
 
 The visual inspection of the data and the corresponding *BIC*-values indicate, that the `ar1`-model may be the model with the best fit and hence, the parameters of this model should be preferred to the other ones.
 
-If you would like to read a little more about this topic, please take a look at the [Regressions](https://www.otexts.org/fpp2/regression.htm)-Chapter of the fpp2-book. For comments and feedback on this post you can use the comments or reach me at twitter via [\@henningsway](https://twitter.com/henningsway).
+Overall I wanted to showcase some of tools one can use to analyze the relation between two timeseries and the implications of certain model choices. If you would like to read a little more about this topic, please take a look at the [Regressions](https://www.otexts.org/fpp2/regression.htm)-Chapter of the fpp2-book. For comments and feedback on this post you can use the comments or reach me at twitter via [\@henningsway](https://twitter.com/henningsway).
 
 <!-- ## not included: ggseas-adoption -->
 ```{r eval=FALSE, include=FALSE}
