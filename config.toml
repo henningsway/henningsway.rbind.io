@@ -3,7 +3,7 @@ languageCode = "en-us"
 title = "Personal Blog"
 theme = "minimal"
 disqusShortname = "rstats-blog" # delete this to disable disqus comments
-googleAnalytics = "UA-115437024-1"
+googleAnalytics = "" #
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
 [params]
