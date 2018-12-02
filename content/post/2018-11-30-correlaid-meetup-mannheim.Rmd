@@ -1,0 +1,41 @@
+---
+title: "Correlaid^2 (Meetup Mannheim)"
+author: "Henning Bumann"
+date: '2018-08-17'
+slug: correlaid-meetup-mannheim
+categories: [""]
+tags: ["correlaid", "data4good", "meetup"]
+output:
+  blogdown::html_page:
+    toc: false
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", message = FALSE)
+```
+
+Two years ago, I heard about [Correlaid](https://correlaid.org/en/), a network of people interested in doing not-for-profit data science. The group is mostly organized online, but once a year everyone comes together for a weekend somewhere in Germany.
+
+Again - as in 2016 - I had a really good time. The weekend was very well organized and started casually with a short recap of what's currently going on. I think setting up a few [local groups](https://correlaid.org/blog/posts/correlaidx) is a good idea, because it's just more fun and productive to do data-projects in a team (and to sit in front of the screen together from time to time).
+
+Overall the crowd was similar to two years ago. Some of us are a little older and more experienced by now, but there were also people who just started being interested in the field. Many attendees I spoke to started their studies being interested in social science and gradually drifted towards methods and more technical areas - but without loosing the interest in the "bigger questions" entirely.
+
+Saturday was reserved for the [Open Space](https://correlaid.org/openspace). I attended the short introduction to JavaScript, with a nice demo of the flexibility of this versatile tool.
+
+```{r rstats love, echo=FALSE, out.width = "200px"}
+knitr::include_graphics("/img/static_vs_dynamic.jpg")
+```
+
+I learned about the various components of a chatbot-system and the careful dataprepartion- and dialogue-coneptualization-steps required ([RASA-Framework](https://github.com/RasaHQ/rasa_core)).
+
+We also discussed some methods for machine learning interpretability. I knew about shap and lime and the idea of local explanations, but the [DeepTaylor](http://www.heatmapping.org/deeptaylor/)-Decomposition approach was new to me and seems really cool.
+
+In the evening I heard more about the Correlaids challenges and lessons learned in the past two years. I had planned to share a little more about my experience with data-projects, but time was short and I'll have to save this for another time. (In case you're just starting your data-journey and would like some thoughts on where to start and what skills are most important - please reach out!)
+
+So: Thank you for the open and super-friendly atmosphere and your efforts to leverage the potential of data and technology for society. Say hi, when you come to [hambuRg](https://www.meetup.com/Hamburg-R-User-Group/) and see you around!
+
+```{r, echo=FALSE}
+blogdown::shortcode('tweet', '1069165316876451840')
+```
