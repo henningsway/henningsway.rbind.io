@@ -1,7 +1,7 @@
 ---
 title: "Correlaid^2 (Meetup Mannheim)"
 author: "Henning Bumann"
-date: '2018-08-17'
+date: '2018-12-02'
 slug: correlaid-meetup-mannheim
 categories: [""]
 tags: ["correlaid", "data4good", "meetup"]
@@ -28,9 +28,7 @@ Saturday was reserved for the [Open Space](https://correlaid.org/openspace). I a
 knitr::include_graphics("/img/static_vs_dynamic.jpg")
 ```
 
-I learned about the various components of a chatbot-system and the careful dataprepartion- and dialogue-coneptualization-steps required ([RASA-Framework](https://github.com/RasaHQ/rasa_core)).
-
-We also discussed some methods for machine learning interpretability. I knew about shap and lime and the idea of local explanations, but the [DeepTaylor](http://www.heatmapping.org/deeptaylor/)-Decomposition approach was new to me and seems really cool.
+I learned about the various components of a chatbot-system and the careful dataprepartion- and dialogue-coneptualization-steps required ([RASA-Framework](https://github.com/RasaHQ/rasa_core)). We also discussed some methods for machine learning interpretability. I knew about shap and lime and the idea of local explanations, but the [DeepTaylor](http://www.heatmapping.org/deeptaylor/)-Decomposition approach was new to me and seems really cool.
 
 In the evening I heard more about the Correlaids challenges and lessons learned in the past two years. I had planned to share a little more about my experience with data-projects, but time was short and I'll have to save this for another time. (In case you're just starting your data-journey and would like some thoughts on where to start and what skills are most important - please reach out!)
 
