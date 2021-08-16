@@ -20,6 +20,10 @@ We started the project a few years back shortly after the `{bookdown}`-package c
 
 Today, I'd like to take the chance to reflect a little on how I went about working through Advanced R and what I take away from the experience. 
 
+```{r echo=FALSE, out.width="25%", fig.align="center",fig.cap="The cover shows all 284 exercises in in 20 chapters."}
+knitr::include_graphics("/img/advrs_cover.png", error = FALSE)
+```
+
 ## The writing process
 When I was solving exercises I typically read the exercise carefully and re-read the related Advanced R chapter or section. Hadley did such a good job of presenting the content, that this step was usually quick and fun. I then started to write some code, look at R's excellent documentation or do a web search for questions I had. Once I had a rough idea of the solution, I usually adding explanations. I often reworked the solution in a second session or the following day, which helped improve the quality, I hope. Whenever I got stuck I handed the question over to Malte so he could have a shot and we also paired on a couple of exercises. It continues to amaze me, how much easier it is to make progress on tougher challenges when you have someone to exchange ideas with directly!
 
