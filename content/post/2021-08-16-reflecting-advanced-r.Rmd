@@ -1,21 +1,21 @@
 ---
 title: Programmer's confidence
-date: '2021-08-15'
+date: '2021-08-16'
 slug: reflections-on-advanced-r-solutions
 categories:
   - rbloggers
 tags: ["R","advanced-r-solutions", "personal"]
 output:
-  html_document:
-  # blogdown::html_page:
+  blogdown::html_page:
     toc: true
+  html_document:
 ---
 
 ```{r include=FALSE}
 knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
 ```
 
-It's the middle of August now and the book ("[Advanced R Solutions](https://advanced-r-solutions.rbind.io)") my friend Malte and I have been writing in our spare time is currently being printed. If you're interested in obtaining a hardcopy, you may already (pre-)order - the book will be shipped later this month: https://www.routledge.com/Advanced-R-Solutions/Grosser-Bumann-Wickham/p/book/9781032007496
+It's the middle of August now and the book ("[Advanced R Solutions](https://advanced-r-solutions.rbind.io)") my friend Malte and I have been writing in our spare time is currently being printed. If you're interested in obtaining a hardcopy, you may already (pre-)order - the book will be shipped in a few days: https://www.routledge.com/Advanced-R-Solutions/Grosser-Bumann-Wickham/p/book/9781032007496
 
 We started the project a few years back shortly after the `{bookdown}`-package came out. We both had used R for a while, enjoyed data analysis, and wanted to develop our technical skills. Advanced R is a great resource and it introduced us to a lot of concepts that helped us understand R's design and behavior more deeply.
 
@@ -35,5 +35,4 @@ And now it's done! The book is already online (https://advanced-r-solutions.rbin
 
 Most of all, I think, that going through the exercises has given me some kind of * programmer's confidence*. I'm more optimistic now, that I can solve a more difficult technical problem and I'm more relaxed when I break it down and try to solve it one step at a time. I know, when to step away for a while and that it may take some time to find a good solution. A new error is already a step forward! :)
 
-It also feels great to have the project off my mind and to have the freedom to move on.
-(=> hier noch einen schönen Abschluss finden)
+It also feels great to have the project off my mind and to have the freedom to move on. It's been a lot of fun, a lot of work and a great ride overall. And if you enjoyed (some parts) of the book of the book or it has helped you, please let me know.
