@@ -1,14 +1,13 @@
 ---
-title: Programmer's confidence
-date: '2021-08-16'
+title: "Programmer's confidence"
+date: "2021-08-16"
 slug: reflections-on-advanced-r-solutions
 categories:
   - rbloggers
 tags: ["R","advanced-r-solutions", "personal"]
+draft: false
 output:
-  blogdown::html_page:
-    toc: true
-  html_document:
+  blogdown::html_page
 ---
 
 ```{r include=FALSE}
@@ -21,7 +20,7 @@ We started the project a few years back shortly after the `{bookdown}`-package c
 
 Today, I'd like to take the chance to reflect a little on how I went about working through Advanced R and what I take away from the experience. 
 
-When I was solving exercises I typically read the exercise carefully and re-read the related Advanced R chapter or section. Hadley did such a good job of presenting the content, that this step was usually quick and fun. I then started to write some code, look at R's excellent documentation or do a web search for questions I had. Once I had a rough idea of the solution, I usually adding explanations. I often reworked the solution in a second session or the following day, which helped improve the quality, I hope. Whenever I got stuck I handed the question over to Malte so he could have a shot and we also paired on a couple of exercises. It continues to amaze me, how much easier it is to make progress on tougher challenges when you have someone to exchange ideas with directly!
+When I was solving exercises I typically read the exercise ca refully and re-read the related Advanced R chapter or section. Hadley did such a good job of presenting the content, that this step was usually quick and fun. I then started to write some code, look at R's excellent documentation or do a web search for questions I had. Once I had a rough idea of the solution, I usually adding explanations. I often reworked the solution in a second session or the following day, which helped improve the quality, I hope. Whenever I got stuck I handed the question over to Malte so he could have a shot and we also paired on a couple of exercises. It continues to amaze me, how much easier it is to make progress on tougher challenges when you have someone to exchange ideas with directly!
 
 But to me, the main challenge of the project was not solving the exercises. I found early on that given enough time and the possibility to consult Advanced R or discuss an exercise, I could solve most of the exercises. To me, the main challenges had more of an 'organizational' nature.
 
